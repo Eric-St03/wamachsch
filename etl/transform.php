@@ -146,7 +146,17 @@ foreach ($newApprenticeshipsByIndustry as $newApprenticeship) {
 }
 
 // === Future new apprenticeships ===
+foreach ($futureNewApprenticeships as $futureNewApprenticeship) {
 
+    $year = $futureNewApprenticeship['Jahr'];
+
+    $result['futureNewApprenticeships'][$year] = [
+        'year' => $year,
+        'reference_scenario' => $futureNewApprenticeship["Referenzszenario EFZ"] + $futureNewApprenticeship["Referenzszenario EBA"],
+        'high_scenario' => $futureNewApprenticeship["Szenario 'hoch' EFZ"] + $futureNewApprenticeship["Szenario 'hoch' EBA"],
+        'low_Scenario' => $futureNewApprenticeship["Szenario 'tief' EFZ"] + $futureNewApprenticeship["Szenario 'tief' EBA"]
+    ];
+}
 
 // === Population by birthplace ===
 $populationByBirthplaceTable = array_slice($populationByBirthplace, 0, 32);
