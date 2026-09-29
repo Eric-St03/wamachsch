@@ -8,8 +8,6 @@ function getCsvContent($filename, $separator = ','): array
 {
     $handle = fopen('data/' . $filename, 'r');
 
-    stream_filter_append($handle, 'convert.iconv.ISO-8859-1/UTF-8');
-
     $header = array_map('trim', fgetcsv($handle, null, $separator, '"', ''));
 
     $extractedData = [];
@@ -30,4 +28,4 @@ $lehrstellenNeueintritteZukunft = getCsvContent('lehrstellen_neueintritte_zukunf
 $bevoelkerungNachGeburtsort = getCsvContent('bevoelkerungsentwicklung_nach_geburtsort.csv');
 $bevoelkerungZukunftNachGeburtsort = getCsvContent('bevoelkerung_zukunft_nach_geburtsort.csv');
 
-var_dump($bevoelkerungNachGeburtsort);
+var_dump($lernendeNachGeburtsort);
