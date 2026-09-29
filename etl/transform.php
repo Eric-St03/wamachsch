@@ -1,62 +1,67 @@
 <?php
 header('Content-type: text/plain; charset=utf8');
 
-// define main variables with extracted data
+// Define main variables with extracted data
 $data = include __DIR__ . '/extract.php';
 $result = [];
 
-// define each dataset as variable
-$lernendeNachGeburtsort = $data['lernendeNachGeburtsort'];
-$lernendeNachKanton = $data['lernendeNachKanton'];
-$lehrstellenNeueintritteNachBranche = $data['lehrstellenNeueintritteNachBranche'];
-$lehrstellenNeueintritteZukunft = $data['lehrstellenNeueintritteZukunft'];
-$bevoelkerungNachGeburtsort = $data['bevoelkerungNachGeburtsort'];
-$bevoelkerungZukunftNachGeburtsort = $data['bevoelkerungZukunftNachGeburtsort'];
+// Define each dataset as a variable
+$learnersByBirthplace = $data['learnersByBirthplace'];
+$learnersByCanton = $data['learnersByCanton'];
+$newApprenticeshipsByIndustry = $data['newApprenticeshipsByIndustry'];
+$futureNewApprenticeships = $data['futureNewApprenticeships'];
+$populationByBirthplace = $data['populationByBirthplace'];
+$futurePopulationByBirthplace = $data['futurePopulationByBirthplace'];
 
 
-// === Lernende nach Geburtsort ===
+// === Learners by birthplace ===
 
 
-// === Lernende nach Kanton ===
+// === Learners by canton ===
 
 
-// === Lehrstellen Neueintritte nach Branche ===
+// === New apprenticeships by industry ===
 
 
-// === Lehrstellen Neueintritte in Zukunft ===
+// === Future new apprenticeships ===
 
 
-// === Bevölkerung nach Geburtsort ===
-$bevoelkerungNachGeburtsortTabelle = array_slice($bevoelkerungNachGeburtsort, 0, 32);
+// === Population by birthplace ===
+$populationByBirthplaceTable = array_slice($populationByBirthplace, 0, 32);
 
-$bevoelkerung = [];
+$population = [];
 
-foreach ($bevoelkerungNachGeburtsortTabelle as $zeile) {
+foreach ($populationByBirthplaceTable as $row) {
+    $year = $row['TIME_PERIOD'];
+    $populationCount = $row['OBS_VALUE'];
 
-    $jahr = $zeile["TIME_PERIOD"];
-    $bevoelkerungsZahl = $zeile["OBS_VALUE"];
-
-    if (!isset($bevoelkerung[$jahr])) {
-        $bevoelkerung[$jahr] = 0;
+    if (!isset($population[$year])) {
+        $population[$year] = 0;
     }
 
-    $bevoelkerung[$jahr] += $bevoelkerungsZahl;
+    $population[$year] += $populationCount;
 }
 
-$schweizer = array_column(array_slice($bevoelkerungNachGeburtsort, 0, 16), "OBS_VALUE");
-$auslaender = array_column(array_slice($bevoelkerungNachGeburtsort, 16, 16), "OBS_VALUE");
+$swissPopulation = array_column(
+    array_slice($populationByBirthplace, 0, 16),
+    'OBS_VALUE'
+);
 
-foreach ($bevoelkerung as $jahr => $bevoelkerungsZahl) {
-    $result['bevoelkerungNachGeburtsort'] = [
-        "jahr" => $jahr,
-        "gesamtbevoelkerung" => $bevoelkerungsZahl,
-        "schweizer" => $schweizer[$jahr - 2010],
-        "auslaender" => $auslaender[$jahr - 2010],
-    ];
-}
+$foreignPopulation = array_column(
+    array_slice($populationByBirthplace, 16, 16),
+    'OBS_VALUE'
+);
+
+$result['populationByBirthplace'] = [
+    'year' => $year,
+    'totalPopulation' => $populationCount,
+    'swiss' => $swissPopulation[$year - 2010],
+    'foreign' => $foreignPopulation[$year - 2010],
+];
 
 
-// === Bevölkerung in Zukunft nach Geburtsort ===
+
+// === Future population by birthplace ===
 
 
 print_r($result);

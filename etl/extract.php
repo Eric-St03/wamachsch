@@ -22,11 +22,11 @@ function getCsvContent($filename, $separator = ','): array
     return $extractedData;
 }
 
-$data['lernendeNachGeburtsort'] = getCsvContent('lernende_nach_geburtsort.csv');
-$data['lernendeNachKanton'] = getCsvContent('lernende_nach_kanton.csv');
-$data['lehrstellenNeueintritteNachBranche'] = getCsvContent('lehrstellen_neueintritte_nach_branche.csv');
-$data['lehrstellenNeueintritteZukunft'] = getCsvContent('lehrstellen_neueintritte_zukunft.csv');
-$data['bevoelkerungNachGeburtsort'] = getCsvContent('bevoelkerungsentwicklung_nach_geburtsort.csv');
-$data['bevoelkerungZukunftNachGeburtsort'] = getCsvContent('bevoelkerung_zukunft_nach_geburtsort.csv');
+$data['learnersByBirthplace'] = getCsvContent('lernende_nach_geburtsort.csv');
+$data['learnersByCanton'] = getCsvContent('lernende_nach_kanton.csv');
+$data['newApprenticeshipsByIndustry'] = getCsvContent('lehrstellen_neueintritte_nach_branche.csv');
+$data['futureNewApprenticeships'] = getCsvContent('lehrstellen_neueintritte_zukunft.csv');
+$data['populationByBirthplace'] = getCsvContent('bevoelkerungsentwicklung_nach_geburtsort.csv');
+$data['futurePopulationByBirthplace'] = getCsvContent('bevoelkerung_zukunft_nach_geburtsort.csv');
 
 return $data;
