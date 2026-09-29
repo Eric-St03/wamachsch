@@ -13,7 +13,6 @@ $futureNewApprenticeships = $data['futureNewApprenticeships'];
 $populationByBirthplace = $data['populationByBirthplace'];
 $futurePopulationByBirthplace = $data['futurePopulationByBirthplace'];
 
-
 // === Learners ===
 
 // = Learners by birthplace =
@@ -81,7 +80,7 @@ foreach ($learnersByCanton as $learner) {
             'valais' => $learner['Valais / Wallis'],
             'neuchatel' => $learner['Neuchâtel'],
             'geneva' => $learner['Genève'],
-            'jura' => $learner['Jura'],
+            'jura' => $learner['Jura']
         ];
     } elseif ($learner['Bildungsstufe und Bildungstyp'] == "Allgemeinbildende Ausbildungen") {
         $generalEducationTrainingsByCanton[$year] = [
@@ -110,7 +109,7 @@ foreach ($learnersByCanton as $learner) {
             'valais' => $learner['Valais / Wallis'],
             'neuchatel' => $learner['Neuchâtel'],
             'geneva' => $learner['Genève'],
-            'jura' => $learner['Jura'],
+            'jura' => $learner['Jura']
         ];
     }
 }
@@ -132,7 +131,19 @@ foreach ($generalEducationTrainingsByBirthplace as $generalEducationTraining) {
 }
 
 // === New apprenticeships by industry ===
+foreach ($newApprenticeshipsByIndustry as $newApprenticeship) {
 
+    $year = $newApprenticeship['Jahr'];
+
+    $result['newApprenticeshipsByIndustry'][$year] = [
+        'year' => $year,
+        'total' => $newApprenticeship['Ausbildungsfeld - Total'],
+        'office_work' => $newApprenticeship['Sekretariats- und Büroarbeit'],
+        'materials' => $newApprenticeship['Werkstoffe (Glas, Papier, Kunststoff und Holz)'],
+        'construction' => $newApprenticeship['Baugewerbe, Hoch- und Tiefbau'],
+        'social_work' => $newApprenticeship['Sozialarbeit und Beratung']
+    ];
+}
 
 // === Future new apprenticeships ===
 
