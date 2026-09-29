@@ -42,23 +42,17 @@ foreach ($populationByBirthplaceTable as $row) {
     $population[$year] += $populationCount;
 }
 
-$swissPopulation = array_column(
-    array_slice($populationByBirthplace, 0, 16),
-    'OBS_VALUE'
-);
+$swissPopulation = array_column(array_slice($populationByBirthplace, 0, 16), 'OBS_VALUE');
+$foreignPopulation = array_column(array_slice($populationByBirthplace, 16, 16), 'OBS_VALUE');
 
-$foreignPopulation = array_column(
-    array_slice($populationByBirthplace, 16, 16),
-    'OBS_VALUE'
-);
-
-$result['populationByBirthplace'] = [
-    'year' => $year,
-    'totalPopulation' => $populationCount,
-    'swiss' => $swissPopulation[$year - 2010],
-    'foreign' => $foreignPopulation[$year - 2010],
-];
-
+foreach ($population as $year => $populationCount) {
+    $result['populationByBirthplace'][] = [
+        'year' => $year,
+        'totalPopulation' => $populationCount,
+        'swiss' => $swissPopulation[$year - 2010],
+        'foreign' => $foreignPopulation[$year - 2010],
+    ];
+}
 
 
 // === Future population by birthplace ===
