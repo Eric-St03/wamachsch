@@ -1,0 +1,56 @@
+body {
+    font-family: sans-serif;
+    background-color: #f0eee9;
+    margin: 0;
+    padding: 0 5%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.wahlAbschnitt {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.wahlAbschnitt div {
+    text-align: center;
+}
+
+.wahlAbschnitt div p {
+    text-align: center;
+}
+
+.btnZeit {
+    min-height: 75px;
+    min-width: 75px;
+    border-radius: 50%;
+    border-style: none;
+    cursor: pointer;
+    background-color: black; /*Platzhalter*/
+}
+
+.gewaehlterInhalt {
+    background-color: #0f0f18;
+    min-height: 10vh;
+    color: #ffffff;
+    padding: 30px;
+}
+
+img {
+    width: 100%;
+}
+
+@media screen and (min-width: 1200px) {
+    .gewaehlterInhalt {
+        display: grid;
+        grid-template-columns: 3fr 5fr;
+        gap: 50px;
+    }
+}
