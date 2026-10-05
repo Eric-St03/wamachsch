@@ -1,18 +1,19 @@
 <?php
 
+echo "Hallo Welt";
+
 $data = include __DIR__ . '/transform.php';
 
 /*print_r($data);*/
 
 /*require_once __DIR__ . '/config.php';*/
-/*
+
 try {
     $pdo = new PDO($dsn, $username, $password, $options);
     echo 'Verbindung zur Datenbank erfolgreich hergestellt </br>';
 } catch (PDOException $e) {
     throw new PDOException($e->getMessage(), (int)$e->getCode());
-}*/
-
+}
 
 //Population By Birthplace
 $sql = "INSERT INTO populationByBirthplace (year, total, swiss, foreign) VALUES (:year, :total, :swiss, :foreign)/* ON DUPLICATE KEY UPDATE hitzetage = VALUES(hitzetage)*/";
