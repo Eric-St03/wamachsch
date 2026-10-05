@@ -32,14 +32,14 @@ foreach ($learnersByBirthplace as $learner) {
             'year' => $year,
             'total' => $learner['Staatsangehörigkeit - Total'],
             'swiss' => $learner['Schweiz'],
-            'foreign' => $learner['Ausland']
+            'foreigners' => $learner['Ausland']
         ];
     } elseif ($learner['Bildungsstufe und Bildungstyp'] == "Allgemeinbildende Ausbildungen") {
         $generalEducationTrainingsByBirthplace[$year] = [
             'year' => $year,
             'total' => $learner['Staatsangehörigkeit - Total'],
             'swiss' => $learner['Schweiz'],
-            'foreign' => $learner['Ausland']
+            'foreigners' => $learner['Ausland']
         ];
     }
 }
@@ -154,7 +154,7 @@ foreach ($futureNewApprenticeships as $futureNewApprenticeship) {
         'year' => $year,
         'reference_scenario' => $futureNewApprenticeship["Referenzszenario EFZ"] + $futureNewApprenticeship["Referenzszenario EBA"],
         'high_scenario' => $futureNewApprenticeship["Szenario 'hoch' EFZ"] + $futureNewApprenticeship["Szenario 'hoch' EBA"],
-        'low_Scenario' => $futureNewApprenticeship["Szenario 'tief' EFZ"] + $futureNewApprenticeship["Szenario 'tief' EBA"]
+        'low_scenario' => $futureNewApprenticeship["Szenario 'tief' EFZ"] + $futureNewApprenticeship["Szenario 'tief' EBA"]
     ];
 }
 
@@ -182,7 +182,7 @@ foreach ($population as $year => $populationCount) {
         'year' => $year,
         'total' => $populationCount,
         'swiss' => $swissPopulation[$year - 2010],
-        'foreign' => $foreignPopulation[$year - 2010]
+        'foreigners' => $foreignPopulation[$year - 2010]
     ];
 }
 
@@ -200,10 +200,10 @@ foreach ($futurePopulationByBirthplace as $futurePopulation) {
         'swiss_reference_scenario' => $futurePopulation["Bevölkerungsstand am 31. Dezember Schweiz Referenzszenario A-00-2025"],
         'swiss_high_scenario' => $futurePopulation["Bevölkerungsstand am 31. Dezember Schweiz 'hohes' Szenario B-00-2025"],
         'swiss_low_scenario' => $futurePopulation["Bevölkerungsstand am 31. Dezember Schweiz 'tiefes' Szenario C-00-2025"],
-        'foreign_reference_scenario' => $futurePopulation["Bevölkerungsstand am 31. Dezember Ausland EWR Referenzszenario A-00-2025"] + $futurePopulation["Bevölkerungsstand am 31. Dezember Ausland Nicht-EWR Referenzszenario A-00-2025"],
-        'foreign_high_scenario' => $futurePopulation["Bevölkerungsstand am 31. Dezember Ausland EWR 'hohes' Szenario B-00-2025"] + $futurePopulation["Bevölkerungsstand am 31. Dezember Ausland Nicht-EWR 'hohes' Szenario B-00-2025"],
-        'foreign_low_scenario' => $futurePopulation["Bevölkerungsstand am 31. Dezember Ausland Nicht-EWR 'tiefes' Szenario C-00-2025"] + $futurePopulation["Bevölkerungsstand am 31. Dezember Ausland Nicht-EWR 'tiefes' Szenario C-00-2025"]
+        'foreigners_reference_scenario' => $futurePopulation["Bevölkerungsstand am 31. Dezember Ausland EWR Referenzszenario A-00-2025"] + $futurePopulation["Bevölkerungsstand am 31. Dezember Ausland Nicht-EWR Referenzszenario A-00-2025"],
+        'foreigners_high_scenario' => $futurePopulation["Bevölkerungsstand am 31. Dezember Ausland EWR 'hohes' Szenario B-00-2025"] + $futurePopulation["Bevölkerungsstand am 31. Dezember Ausland Nicht-EWR 'hohes' Szenario B-00-2025"],
+        'foreigners_low_scenario' => $futurePopulation["Bevölkerungsstand am 31. Dezember Ausland Nicht-EWR 'tiefes' Szenario C-00-2025"] + $futurePopulation["Bevölkerungsstand am 31. Dezember Ausland Nicht-EWR 'tiefes' Szenario C-00-2025"]
     ];
 }
 
-print_r($result);
+return $result;
