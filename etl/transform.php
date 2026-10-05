@@ -188,6 +188,22 @@ foreach ($population as $year => $populationCount) {
 
 
 // === Future population by birthplace ===
+foreach ($futurePopulationByBirthplace as $futurePopulation) {
 
+    $year = $futurePopulation['Jahr'];
+
+    $result['futurePopulationByBirthplace'][$year] = [
+        'year' => $year,
+        'total_reference_scenario' => $futurePopulation["Bevölkerungsstand am 31. Dezember Staatsangehörigkeit - Total Referenzszenario A-00-2025"],
+        'total_high_scenario' => $futurePopulation["Bevölkerungsstand am 31. Dezember Staatsangehörigkeit - Total 'hohes' Szenario B-00-2025"],
+        'total_low_Scenario' => $futurePopulation["Bevölkerungsstand am 31. Dezember Staatsangehörigkeit - Total 'tiefes' Szenario C-00-2025"],
+        'swiss_reference_scenario' => $futurePopulation["Bevölkerungsstand am 31. Dezember Schweiz Referenzszenario A-00-2025"],
+        'swiss_high_scenario' => $futurePopulation["Bevölkerungsstand am 31. Dezember Schweiz 'hohes' Szenario B-00-2025"],
+        'swiss_low_Scenario' => $futurePopulation["Bevölkerungsstand am 31. Dezember Schweiz 'tiefes' Szenario C-00-2025"],
+        'foreign_reference_scenario' => $futurePopulation["Bevölkerungsstand am 31. Dezember Ausland EWR Referenzszenario A-00-2025"] + $futurePopulation["Bevölkerungsstand am 31. Dezember Ausland Nicht-EWR Referenzszenario A-00-2025"],
+        'foreign_high_scenario' => $futurePopulation["Bevölkerungsstand am 31. Dezember Ausland EWR 'hohes' Szenario B-00-2025"] + $futurePopulation["Bevölkerungsstand am 31. Dezember Ausland Nicht-EWR 'hohes' Szenario B-00-2025"],
+        'foreign_low_Scenario' => $futurePopulation["Bevölkerungsstand am 31. Dezember Ausland Nicht-EWR 'tiefes' Szenario C-00-2025"] + $futurePopulation["Bevölkerungsstand am 31. Dezember Ausland Nicht-EWR 'tiefes' Szenario C-00-2025"]
+    ];
+}
 
 print_r($result);
