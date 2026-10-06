@@ -91,6 +91,41 @@ if (isset($_GET['new_apprenticeships_by_industry']) && $_GET['new_apprenticeship
     }
 }
 
+// === Future new apprenticeships ===
+
+if (isset($_GET['future_new_apprenticeships']) && $_GET['future_new_apprenticeships'] === "true") {
+
+    $sql = 'SELECT year';
+
+    // Filter: scenario
+
+    if (!isset($_GET['scenario'])) {
+        $sql .= ', reference_scenario, high_scenario, low_scenario';
+    } elseif (isset($_GET['scenario']) && !empty($_GET['scenario'])) {
+        $allowedScenario = ['reference', 'high', 'low'];
+
+        foreach ($_GET['scenario'] as $scenario) {
+            if (in_array($scenario, $allowedScenario)) {
+                $sql .= ", " . $scenario . "_scenario";
+            }
+        }
+    }
+
+    $sql .= ' FROM future_new_apprenticeships WHERE 1 = 1';
+
+    $params = [];
+
+    // Filter: year
+    if (isset($_GET['start_year']) && !empty($_GET['start_year'])) {
+        $sql .= " AND year >= :START_YEAR";
+        $params[':START_YEAR'] = $_GET['start_year'];
+    }
+    if (isset($_GET['end_year']) && !empty($_GET['end_year'])) {
+        $sql .= " AND year <= :END_YEAR";
+        $params[':END_YEAR'] = $_GET['end_year'];
+    }
+}
+
 if (isset($sql)) {
     $statement = $pdo->prepare($sql);
     $statement->execute($params);
