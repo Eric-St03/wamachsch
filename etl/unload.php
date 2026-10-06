@@ -10,12 +10,12 @@ try {
     throw new PDOException($e->getMessage(), (int)$e->getCode());
 }
 
-$data = [];
+$params = [];
 
 
 // === Learners ===
 
-if (isset($_GET['learners']) && $_GET['learners']) {
+if (isset($_GET['learners']) && $_GET['learners'] === "true") {
 
     $sql = 'SELECT learners.year, training_types.training_type, learners.total, learners.swiss, learners.foreigners';
 
@@ -54,10 +54,49 @@ if (isset($_GET['learners']) && $_GET['learners']) {
         $params[':END_YEAR'] = $_GET['end_year'];
     }
 
+}
+
+// === New apprenticeships by industry ===
+
+if (isset($_GET['new_apprenticeships_by_industry']) && $_GET['new_apprenticeships_by_industry'] === "true") {
+
+    $sql = 'SELECT year';
+
+    // Filter: Industry
+
+    if (!isset($_GET['industry'])) {
+        $sql .= ', office_work, materials, construction, social_work';
+    } elseif (isset($_GET['industry']) && !empty($_GET['industry'])) {
+        $allowedIndustries = ['office_work', 'materials', 'construction', 'social_work'];
+
+        foreach ($_GET['industry'] as $industry) {
+            if (in_array($industry, $allowedIndustries)) {
+                $sql .= ", " . $industry;
+            }
+        }
+    }
+
+    $sql .= ' FROM new_apprenticeships_by_industry WHERE 1 = 1';
+
+    $params = [];
+
+    // Filter: year
+    if (isset($_GET['start_year']) && !empty($_GET['start_year'])) {
+        $sql .= " AND year >= :START_YEAR";
+        $params[':START_YEAR'] = $_GET['start_year'];
+    }
+    if (isset($_GET['end_year']) && !empty($_GET['end_year'])) {
+        $sql .= " AND year <= :END_YEAR";
+        $params[':END_YEAR'] = $_GET['end_year'];
+    }
+}
+
+if (isset($sql)) {
     $statement = $pdo->prepare($sql);
     $statement->execute($params);
 
     $data = $statement->fetchAll();
+
+    echo json_encode($data);
 }
 
-echo json_encode($data);
