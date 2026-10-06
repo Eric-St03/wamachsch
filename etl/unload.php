@@ -137,6 +137,39 @@ if (isset($_GET['population_by_birthplace']) && $_GET['population_by_birthplace'
     }
 }
 
+// === Future Population By Birthplace ===
+
+if (isset($_GET['future_population_by_birthplace']) && $_GET['future_population_by_birthplace'] === "true") {
+
+    $sql = 'SELECT year';
+
+    // Filter: scenario
+
+    if (!isset($_GET['scenario'])) {
+        $sql .= ', total_reference_scenario, total_high_scenario, total_low_scenario, swiss_reference_scenario, swiss_high_scenario, swiss_low_scenario, foreigners_reference_scenario, foreigners_high_scenario, foreigners_low_scenario';
+    } elseif (isset($_GET['scenario']) && !empty($_GET['scenario'])) {
+        $allowedScenario = ['reference', 'high', 'low'];
+
+        foreach ($_GET['scenario'] as $scenario) {
+            if (in_array($scenario, $allowedScenario)) {
+                $sql .= ", total_" . $scenario . "_scenario, swiss_" . $scenario . "_scenario, foreigners_" . $scenario . "_scenario";
+            }
+        }
+    }
+
+    $sql .= ' FROM future_population_by_birthplace WHERE 1 = 1';
+
+    // Filter: year
+    if (isset($_GET['start_year']) && !empty($_GET['start_year'])) {
+        $sql .= " AND year >= :START_YEAR";
+        $params[':START_YEAR'] = $_GET['start_year'];
+    }
+    if (isset($_GET['end_year']) && !empty($_GET['end_year'])) {
+        $sql .= " AND year <= :END_YEAR";
+        $params[':END_YEAR'] = $_GET['end_year'];
+    }
+}
+
 if (isset($sql)) {
     $statement = $pdo->prepare($sql);
     $statement->execute($params);
