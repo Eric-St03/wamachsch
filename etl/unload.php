@@ -36,8 +36,6 @@ if (isset($_GET['learners']) && $_GET['learners'] === "true") {
     ON learners.training_id = training_types.id
     WHERE 1 = 1';
 
-    $params = [];
-
     // Filter: training type
     if (isset($_GET['training_type']) && !empty($_GET['training_type'])) {
         $sql .= " AND training_types.training_type = :TRAINING_TYPE";
@@ -78,8 +76,6 @@ if (isset($_GET['new_apprenticeships_by_industry']) && $_GET['new_apprenticeship
 
     $sql .= ' FROM new_apprenticeships_by_industry WHERE 1 = 1';
 
-    $params = [];
-
     // Filter: year
     if (isset($_GET['start_year']) && !empty($_GET['start_year'])) {
         $sql .= " AND year >= :START_YEAR";
@@ -113,7 +109,22 @@ if (isset($_GET['future_new_apprenticeships']) && $_GET['future_new_apprenticesh
 
     $sql .= ' FROM future_new_apprenticeships WHERE 1 = 1';
 
-    $params = [];
+    // Filter: year
+    if (isset($_GET['start_year']) && !empty($_GET['start_year'])) {
+        $sql .= " AND year >= :START_YEAR";
+        $params[':START_YEAR'] = $_GET['start_year'];
+    }
+    if (isset($_GET['end_year']) && !empty($_GET['end_year'])) {
+        $sql .= " AND year <= :END_YEAR";
+        $params[':END_YEAR'] = $_GET['end_year'];
+    }
+}
+
+// === Population By Birthplace ===
+
+if (isset($_GET['population_by_birthplace']) && $_GET['population_by_birthplace'] === "true") {
+
+    $sql = 'SELECT `year`, total, swiss, foreigners FROM population_by_birthplace WHERE 1 = 1';
 
     // Filter: year
     if (isset($_GET['start_year']) && !empty($_GET['start_year'])) {
