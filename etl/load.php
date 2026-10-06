@@ -23,8 +23,9 @@ function insertTrainingTypes($trainingType) {
 
     $insertTrainingTypes = "INSERT INTO training_types (training_type) VALUES (:TRAINING_TYPE) ON DUPLICATE KEY UPDATE training_type = training_type;";
     $statement = $pdo->prepare($insertTrainingTypes);
-    $statement->bindParam(':TRAINING_TYPE', $trainingType, PDO::PARAM_STR);
-    $statement->execute();
+    $statement->execute([
+        ':TRAINING_TYPE' => $trainingType
+    ]);
 }
 
 $trainingTypes = ["vocational", "generalEducation", "other"];
@@ -42,40 +43,33 @@ function insertLearner($training, $trainingType) {
     global $pdo;
 
     if (!($trainingType == "vocational" || $trainingType == "generalEducation")) {
-
         $trainingType = "other";
-
     }
 
     $selectTrainingId = "SELECT id FROM training_types WHERE training_type = :TRAINING_TYPE";
-
     $statement = $pdo->prepare($selectTrainingId);
-    $statement->bindParam(':TRAINING_TYPE', $trainingType, PDO::PARAM_STR);
-    $statement->execute();
+    $statement->execute([':TRAINING_TYPE' => $trainingType]);
 
     $trainingId = $statement->fetch();
 
-    if($trainingId) {
-
-        $insertLearners = "INSERT INTO learners (`year`, training_id, total, swiss, foreigners, zurich, bern, uri, schwyz, obwalden, nidwalden, glarus, zug, fribourg, solothurn, basel_stadt, basel_landschaft, schaffhausen, appenzell_ausserrhoden, appenzell_innerrhoden, st_gallen, grisons, aargau, thurgau, ticino, vaud, valais, neuchatel, geneva, jura) VALUES (:YEAR, :TRAINING_ID, :TOTAL, :SWISS, :FOREIGNERS, :ZURICH, :BERN, :URI, :SCHWYZ, :OBWALDEN, :NIDWALDEN, :GLARUS, :ZUG, :FRIBOURG, :SOLOTHURN, :BASEL_STADT, :BASEL_LANDSCHAFT, :SCHAFFHAUSEN, :APPENZELL_AUSSERRHODEN, :APPENZELL_INNERRHODEN, :ST_GALLEN, :GRISONS, :AARGAU, :THURGAU, :TICINO, :VAUD, :VALAIS, :NEUCHATEL, :GENEVA, :JURA) ON DUPLICATE KEY UPDATE `year` = `year`;";
+    if ($trainingId) {
+        $insertLearners = "INSERT INTO learners (`year`, training_id, total, swiss, foreigners, zurich, bern, uri, schwyz, obwalden, nidwalden, glarus, zug, fribourg, solothurn, basel_stadt, basel_landschaft, schaffhausen, appenzell_ausserrhoden, appenzell_innerrhoden, st_gallen, grisons, aargau, thurgau, ticino, vaud, valais, neuchatel, geneva, jura) VALUES (:YEAR, :TRAINING_ID, :TOTAL, :SWISS, :FOREIGNERS, :ZURICH, :BERN, :URI, :SCHWYZ, :OBWALDEN, :NIDWALDEN, :GLARUS, :ZUG, :FRIBOURG, :SOLOTHURN, :BASEL_STADT, :BASEL_LANDSCHAFT, :SCHAFFHAUSEN, :APPENZELL_AUSSERRHODEN, :APPENZELL_INNERRHODEN, :ST_GALLEN, :GRISONS, :AARGAU, :THURGAU, :TICINO, :VAUD, :VALAIS, :NEUCHATEL, :GENEVA, :JURA) ON DUPLICATE KEY UPDATE `year` = `year`";
 
         $statement = $pdo->prepare($insertLearners);
 
-        $statement->bindParam(':TRAINING_ID', $trainingId['id'], PDO::PARAM_INT);
+        // Build parameters array
+        $params = [':TRAINING_ID' => $trainingId['id']];
 
         $columns = ['year', 'total', 'swiss', 'foreigners', 'zurich', 'bern', 'uri', 'schwyz', 'obwalden', 'nidwalden', 'glarus', 'zug', 'fribourg', 'solothurn', 'basel_stadt', 'basel_landschaft', 'schaffhausen', 'appenzell_ausserrhoden', 'appenzell_innerrhoden', 'st_gallen', 'grisons', 'aargau', 'thurgau', 'ticino', 'vaud', 'valais', 'neuchatel', 'geneva', 'jura'];
 
         foreach ($columns as $column) {
-
-            $statement->bindParam(':' . strtoupper($column), $training[$column], PDO::PARAM_INT);
-
+            $params[':' . strtoupper($column)] = $training[$column];
         }
 
-        $statement->execute();
-
+        $statement->execute($params);
     }
-
 }
+
 
 
 foreach ($data['vocationalTrainings'] as $training) {
@@ -98,13 +92,15 @@ function insertNewApprenticeshipsByIndustry($apprenticeship)
 
     $insertNewApprenticeshipsByIndustry = "INSERT INTO new_apprenticeships_by_industry (`year`, office_work, materials, construction, social_work) VALUES (:YEAR, :OFFICE_WORK, :MATERIALS, :CONSTRUCTION, :SOCIAL_WORK) ON DUPLICATE KEY UPDATE `year` = `year`;";
     $statement = $pdo->prepare($insertNewApprenticeshipsByIndustry);
-    $statement->bindParam(':YEAR', $apprenticeship['year'], PDO::PARAM_INT);
-    $statement->bindParam(':OFFICE_WORK', $apprenticeship['office_work'], PDO::PARAM_INT);
-    $statement->bindParam(':MATERIALS', $apprenticeship['materials'], PDO::PARAM_INT);
-    $statement->bindParam(':CONSTRUCTION', $apprenticeship['construction'], PDO::PARAM_INT);
-    $statement->bindParam(':SOCIAL_WORK', $apprenticeship['social_work'], PDO::PARAM_INT);
-    $statement->execute();
+    $statement->execute([
+        ':YEAR' => $apprenticeship['year'],
+        ':OFFICE_WORK' => $apprenticeship['office_work'],
+        ':MATERIALS' => $apprenticeship['materials'],
+        ':CONSTRUCTION' => $apprenticeship['construction'],
+        ':SOCIAL_WORK' => $apprenticeship['social_work']
+    ]);
 }
+
 
 
 $trainingTypes = ["vocational", "generalEducation", "other"];
@@ -124,12 +120,12 @@ function insertFutureNewApprenticeships($futureApprenticeship)
 
     $insertFutureNewApprenticeships = "INSERT INTO future_new_apprenticeships (`year`, reference_scenario, high_scenario, low_scenario) VALUES (:YEAR, :REFERENCE_SCENARIO, :HIGH_SCENARIO, :LOW_SCENARIO) ON DUPLICATE KEY UPDATE `year` = `year`;";
     $statement = $pdo->prepare($insertFutureNewApprenticeships);
-    $statement->bindParam(':YEAR', $futureApprenticeship['year'], PDO::PARAM_INT);
-    $statement->bindParam(':REFERENCE_SCENARIO', $futureApprenticeship['reference_scenario'], PDO::PARAM_INT);
-    $statement->bindParam(':HIGH_SCENARIO', $futureApprenticeship['high_scenario'], PDO::PARAM_INT);
-    $statement->bindParam(':LOW_SCENARIO', $futureApprenticeship['low_scenario'], PDO::PARAM_INT);
-    $statement->execute();
-
+    $statement->execute([
+        ':YEAR' => $futureApprenticeship['year'],
+        ':REFERENCE_SCENARIO' => $futureApprenticeship['reference_scenario'],
+        ':HIGH_SCENARIO' => $futureApprenticeship['high_scenario'],
+        ':LOW_SCENARIO' => $futureApprenticeship['low_scenario']
+    ]);
 }
 
 
@@ -150,12 +146,12 @@ function insertPopulationByBirthplace($population)
 
     $insertPopulationByBirthplace = "INSERT INTO population_by_birthplace (`year`, total, swiss, foreigners) VALUES (:YEAR, :TOTAL, :SWISS, :FOREIGNERS) ON DUPLICATE KEY UPDATE `year` = `year`;";
     $statement = $pdo->prepare($insertPopulationByBirthplace);
-    $statement->bindParam(':YEAR', $population['year'], PDO::PARAM_INT);
-    $statement->bindParam(':TOTAL', $population['total'], PDO::PARAM_INT);
-    $statement->bindParam(':SWISS', $population['swiss'], PDO::PARAM_INT);
-    $statement->bindParam(':FOREIGNERS', $population['foreigners'], PDO::PARAM_INT);
-    $statement->execute();
-
+    $statement->execute([
+        ':YEAR' => $population['year'],
+        ':TOTAL' => $population['total'],
+        ':SWISS' => $population['swiss'],
+        ':FOREIGNERS' => $population['foreigners']
+    ]);
 }
 
 
@@ -173,17 +169,18 @@ function insertFuturePopulationByBirthplace($population)
 
     $insertFuturePopulationByBirthplace = "INSERT INTO future_population_by_birthplace (`year`, total_reference_scenario, total_high_scenario, total_low_scenario, swiss_reference_scenario, swiss_high_scenario, swiss_low_scenario, foreigners_reference_scenario, foreigners_high_scenario, foreigners_low_scenario) VALUES ( :YEAR, :TOTAL_REFERENCE_SCENARIO, :TOTAL_HIGH_SCENARIO, :TOTAL_LOW_SCENARIO, :SWISS_REFERENCE_SCENARIO, :SWISS_HIGH_SCENARIO, :SWISS_LOW_SCENARIO, :FOREIGNERS_REFERENCE_SCENARIO, :FOREIGNERS_HIGH_SCENARIO, :FOREIGNERS_LOW_SCENARIO) ON DUPLICATE KEY UPDATE `year` = `year`;";
     $statement = $pdo->prepare($insertFuturePopulationByBirthplace);
-    $statement->bindParam(':YEAR', $population['year'], PDO::PARAM_INT);
-    $statement->bindParam(':TOTAL_REFERENCE_SCENARIO', $population['total_reference_scenario'], PDO::PARAM_INT);
-    $statement->bindParam(':TOTAL_HIGH_SCENARIO', $population['total_high_scenario'], PDO::PARAM_INT);
-    $statement->bindParam(':TOTAL_LOW_SCENARIO', $population['total_low_scenario'], PDO::PARAM_INT);
-    $statement->bindParam(':SWISS_REFERENCE_SCENARIO', $population['swiss_reference_scenario'], PDO::PARAM_INT);
-    $statement->bindParam(':SWISS_HIGH_SCENARIO', $population['swiss_high_scenario'], PDO::PARAM_INT);
-    $statement->bindParam(':SWISS_LOW_SCENARIO', $population['swiss_low_scenario'], PDO::PARAM_INT);
-    $statement->bindParam(':FOREIGNERS_REFERENCE_SCENARIO', $population['foreigners_reference_scenario'], PDO::PARAM_INT);
-    $statement->bindParam(':FOREIGNERS_HIGH_SCENARIO', $population['foreigners_high_scenario'], PDO::PARAM_INT);
-    $statement->bindParam(':FOREIGNERS_LOW_SCENARIO', $population['foreigners_low_scenario'], PDO::PARAM_INT);
-    $statement->execute();
+    $statement->execute([
+        ':YEAR' => $population['year'],
+        ':TOTAL_REFERENCE_SCENARIO' => $population['total_reference_scenario'],
+        ':TOTAL_HIGH_SCENARIO' => $population['total_high_scenario'],
+        ':TOTAL_LOW_SCENARIO' => $population['total_low_scenario'],
+        ':SWISS_REFERENCE_SCENARIO' => $population['swiss_reference_scenario'],
+        ':SWISS_HIGH_SCENARIO' => $population['swiss_high_scenario'],
+        ':SWISS_LOW_SCENARIO' => $population['swiss_low_scenario'],
+        ':FOREIGNERS_REFERENCE_SCENARIO' => $population['foreigners_reference_scenario'],
+        ':FOREIGNERS_HIGH_SCENARIO' => $population['foreigners_high_scenario'],
+        ':FOREIGNERS_LOW_SCENARIO' => $population['foreigners_low_scenario']
+    ]);
 }
 
 
