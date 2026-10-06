@@ -10,11 +10,54 @@ try {
     throw new PDOException($e->getMessage(), (int)$e->getCode());
 }
 
-$sql = "SELECT city, year, hitzetage FROM hitzesommer WHERE 1=1";
+$data = [];
 
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
 
-$data =$stmt->fetchAll();
+// === Learners ===
+
+if (isset($_GET['learners']) && $_GET['learners']) {
+
+    $sql = 'SELECT learners.year, training_types.training_type, learners.total, learners.swiss, learners.foreigners';
+
+    // Filter: Cantons
+
+    if (isset($_GET['canton']) && !empty($_GET['canton'])) {
+        $allowedCantons = ['zurich', 'bern', 'uri', 'schwyz', 'obwalden', 'nidwalden', 'glarus', 'zug', 'fribourg', 'solothurn', 'basel_stadt', 'basel_landschaft', 'schaffhausen', 'appenzell_ausserrhoden', 'appenzell_innerrhoden', 'st_gallen', 'grisons', 'aargau', 'thurgau', 'ticino', 'vaud', 'valais', 'neuchatel', 'geneva', 'jura'];
+
+        foreach ($_GET['canton'] as $canton) {
+            if (in_array($canton, $allowedCantons)) {
+                $sql .= ", learners." . $canton;
+            }
+        }
+    }
+
+    $sql .= ' FROM learners
+    INNER JOIN training_types 
+    ON learners.training_id = training_types.id
+    WHERE 1 = 1';
+
+    $params = [];
+
+    // Filter: training type
+    if (isset($_GET['training_type']) && !empty($_GET['training_type'])) {
+        $sql .= " AND training_types.training_type = :TRAINING_TYPE";
+        $params[':TRAINING_TYPE'] = $_GET['training_type'];
+    }
+
+    // Filter: year
+    if (isset($_GET['start_year']) && !empty($_GET['start_year'])) {
+        $sql .= " AND learners.year >= :START_YEAR";
+        $params[':START_YEAR'] = $_GET['start_year'];
+    }
+    if (isset($_GET['end_year']) && !empty($_GET['end_year'])) {
+        $sql .= " AND learners.year <= :END_YEAR";
+        $params[':END_YEAR'] = $_GET['end_year'];
+    }
+
+    $statement = $pdo->prepare($sql);
+    $statement->execute($params);
+
+    $data = $statement->fetchAll();
+}
 
 echo json_encode($data);
