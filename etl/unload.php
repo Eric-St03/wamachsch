@@ -58,21 +58,22 @@ if (isset($_GET['learners']) && $_GET['learners'] === "true") {
 
 if (isset($_GET['new_apprenticeships_by_industry']) && $_GET['new_apprenticeships_by_industry'] === "true") {
 
-    $sql = 'SELECT year';
+    $sql = 'SELECT year, total';
 
     // Filter: Industry
 
     if (!isset($_GET['industry'])) {
-        $sql .= ', office_work, materials, construction, social_work';
-    } elseif (isset($_GET['industry']) && !empty($_GET['industry'])) {
-        $allowedIndustries = ['office_work', 'materials', 'construction', 'social_work'];
+        $sql .= ', audiovisual_techniques_and_media_production, fashion_interior_and_industrial_design, crafts, music_and_performing_arts, library_information_and_archives, business_and_administration_unspecified, management_and_administration, office_work, wholesale_and_retail, computer_use, databases_network_design_and_administration, software_and_application_development_and_analysis, engineering_and_technical_professions_unspecified, chemical_and_process_engineering, environmental_protection_technologies, electricity_and_energy, electronics_and_automation, mechanical_and_metalworking, motor_vehicles_ships_and_aircraft, food, materials, textiles_clothing_footwear_and_leather, architecture_and_urban_planning, construction, crop_and_animal_production, horticulture, forestry, veterinary, dentistry, nursing_and_midwifery, medical_diagnostics_and_treatment_technology, therapy_and_rehabilitation, pharmacy, care_of_older_or_disabled_people, child_and_youth_work, social_work, interdisciplinary_health_and_social_programmes, domestic_services, hairdressing_and_beauty_treatment, hospitality_and_catering, sport, transport_services';
+    } elseif (!empty($_GET['industry'])) {
+        $allowedIndustries = ['total', 'audiovisual_techniques_and_media_production', 'fashion_interior_and_industrial_design', 'crafts', 'music_and_performing_arts', 'library_information_and_archives', 'business_and_administration_unspecified', 'management_and_administration', 'office_work', 'wholesale_and_retail', 'computer_use', 'databases_network_design_and_administration', 'software_and_application_development_and_analysis', 'engineering_and_technical_professions_unspecified', 'chemical_and_process_engineering', 'environmental_protection_technologies', 'electricity_and_energy', 'electronics_and_automation', 'mechanical_and_metalworking', 'motor_vehicles_ships_and_aircraft', 'food', 'materials', 'textiles_clothing_footwear_and_leather', 'architecture_and_urban_planning', 'construction', 'crop_and_animal_production', 'horticulture', 'forestry', 'veterinary', 'dentistry', 'nursing_and_midwifery', 'medical_diagnostics_and_treatment_technology', 'therapy_and_rehabilitation', 'pharmacy', 'care_of_older_or_disabled_people', 'child_and_youth_work', 'social_work', 'interdisciplinary_health_and_social_programmes', 'domestic_services', 'hairdressing_and_beauty_treatment', 'hospitality_and_catering', 'sport', 'transport_services'];
 
         foreach ($_GET['industry'] as $industry) {
-            if (in_array($industry, $allowedIndustries)) {
-                $sql .= ", " . $industry;
+            if (in_array($industry, $allowedIndustries, true)) {
+                $sql .= ', ' . $industry;
             }
         }
     }
+
 
     $sql .= ' FROM new_apprenticeships_by_industry WHERE 1 = 1';
 
