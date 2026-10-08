@@ -38,35 +38,30 @@ Ohne canton\[] werden keine einzelnen Kantonsfelder zurückgegeben.
 
 ## New apprenticeships by industry
 
-
-
 ### Datapoints:
 
-year | office\_work | materials | construction | social\_work
-
-
+year | total | office_work | materials | construction | social_work audiovisual_techniques_and_media_production | fashion_interior_and_industrial_design | crafts | music_and_performing_arts | library_information_and_archives | business_and_administration_unspecified | management_and_administration | wholesale_and_retail | computer_use | databases_network_design_and_administration | software_and_application_development_and_analysis | engineering_and_technical_professions_unspecified | chemical_and_process_engineering | environmental_protection_technologies | electricity_and_energy | electronics_and_automation | mechanical_and_metalworking | motor_vehicles_ships_and_aircraft | food | textiles_clothing_footwear_and_leather | architecture_and_urban_planning | crop_and_animal_production | horticulture | forestry | veterinary | dentistry | nursing_and_midwifery | medical_diagnostics_and_treatment_technology | therapy_and_rehabilitation | pharmacy | care_of_older_or_disabled_people | child_and_youth_work | interdisciplinary_health_and_social_programmes | domestic_services | hairdressing_and_beauty_treatment | hospitality_and_catering | sport | transport_services
 
 ### Base query:
 
-unload.php?new\_apprenticeships\_by\_industry=true
-
-
+unload.php?new_apprenticeships_by_industry=true
 
 ### Filters:
 
-industry\[] | start\_year | end\_year
+industry[] | start_year | end_year
+
+industry[] kann mehrfach angegeben werden. Zulässige Branchen: 
+
+office_work, materials, construction, social_work
+
+Sekundär:
+
+audiovisual_techniques_and_media_production, fashion_interior_and_industrial_design, crafts, music_and_performing_arts, library_information_and_archives, business_and_administration_unspecified, management_and_administration, wholesale_and_retail, computer_use, databases_network_design_and_administration, software_and_application_development_and_analysis, engineering_and_technical_professions_unspecified, chemical_and_process_engineering, environmental_protection_technologies, electricity_and_energy, electronics_and_automation, mechanical_and_metalworking, motor_vehicles_ships_and_aircraft, food, textiles_clothing_footwear_and_leather, architecture_and_urban_planning, crop_and_animal_production, horticulture, forestry, veterinary, dentistry, nursing_and_midwifery, medical_diagnostics_and_treatment_technology, therapy_and_rehabilitation, pharmacy, care_of_older_or_disabled_people, child_and_youth_work, interdisciplinary_health_and_social_programmes, domestic_services, hairdressing_and_beauty_treatment, hospitality_and_catering, sport, transport_services.
+
+Ohne industry[] werden alle Branchen zurückgegeben.
 
 
-
-industry\[] kann mehrfach angegeben werden. Zulässige Werte: office\_work, materials, construction, social\_work
-
-
-
-Ohne industry\[] werden alle vier Branchen zurückgegeben.
-
-
-
-
+**Example:** unload.php?new_apprenticeships_by_industry=true&industry[]=office_work&industry[]=materials&industry[]=construction&industry[]=social_work&start_year=2010&end_year=2025
 
 
 

@@ -90,16 +90,22 @@ function insertNewApprenticeshipsByIndustry($apprenticeship)
 {
     global $pdo;
 
-    $insertNewApprenticeshipsByIndustry = "INSERT INTO new_apprenticeships_by_industry (`year`, office_work, materials, construction, social_work) VALUES (:YEAR, :OFFICE_WORK, :MATERIALS, :CONSTRUCTION, :SOCIAL_WORK) ON DUPLICATE KEY UPDATE `year` = `year`;";
+    $insertNewApprenticeshipsByIndustry = "
+        INSERT INTO new_apprenticeships_by_industry ( `year`, total, audiovisual_techniques_and_media_production, fashion_interior_and_industrial_design, crafts, music_and_performing_arts, library_information_and_archives, business_and_administration_unspecified, management_and_administration, office_work, wholesale_and_retail, computer_use, databases_network_design_and_administration, software_and_application_development_and_analysis, engineering_and_technical_professions_unspecified, chemical_and_process_engineering, environmental_protection_technologies, electricity_and_energy, electronics_and_automation, mechanical_and_metalworking, motor_vehicles_ships_and_aircraft, food, materials, textiles_clothing_footwear_and_leather, architecture_and_urban_planning, construction, crop_and_animal_production, horticulture, forestry, veterinary, dentistry, nursing_and_midwifery, medical_diagnostics_and_treatment_technology, therapy_and_rehabilitation, pharmacy, care_of_older_or_disabled_people, child_and_youth_work, social_work, interdisciplinary_health_and_social_programmes, domestic_services, hairdressing_and_beauty_treatment, hospitality_and_catering, sport, transport_services) VALUES ( :YEAR, :TOTAL, :AUDIOVISUAL_TECHNIQUES_AND_MEDIA_PRODUCTION, :FASHION_INTERIOR_AND_INDUSTRIAL_DESIGN, :CRAFTS, :MUSIC_AND_PERFORMING_ARTS, :LIBRARY_INFORMATION_AND_ARCHIVES, :BUSINESS_AND_ADMINISTRATION_UNSPECIFIED, :MANAGEMENT_AND_ADMINISTRATION, :OFFICE_WORK, :WHOLESALE_AND_RETAIL, :COMPUTER_USE, :DATABASES_NETWORK_DESIGN_AND_ADMINISTRATION, :SOFTWARE_AND_APPLICATION_DEVELOPMENT_AND_ANALYSIS, :ENGINEERING_AND_TECHNICAL_PROFESSIONS_UNSPECIFIED, :CHEMICAL_AND_PROCESS_ENGINEERING, :ENVIRONMENTAL_PROTECTION_TECHNOLOGIES, :ELECTRICITY_AND_ENERGY, :ELECTRONICS_AND_AUTOMATION, :MECHANICAL_AND_METALWORKING, :MOTOR_VEHICLES_SHIPS_AND_AIRCRAFT, :FOOD, :MATERIALS, :TEXTILES_CLOTHING_FOOTWEAR_AND_LEATHER, :ARCHITECTURE_AND_URBAN_PLANNING, :CONSTRUCTION, :CROP_AND_ANIMAL_PRODUCTION, :HORTICULTURE, :FORESTRY, :VETERINARY, :DENTISTRY, :NURSING_AND_MIDWIFERY, :MEDICAL_DIAGNOSTICS_AND_TREATMENT_TECHNOLOGY, :THERAPY_AND_REHABILITATION, :PHARMACY, :CARE_OF_OLDER_OR_DISABLED_PEOPLE, :CHILD_AND_YOUTH_WORK, :SOCIAL_WORK, :INTERDISCIPLINARY_HEALTH_AND_SOCIAL_PROGRAMMES, :DOMESTIC_SERVICES, :HAIRDRESSING_AND_BEAUTY_TREATMENT, :HOSPITALITY_AND_CATERING, :SPORT, :TRANSPORT_SERVICES) ON DUPLICATE KEY UPDATE `year` = `year`";
+
     $statement = $pdo->prepare($insertNewApprenticeshipsByIndustry);
-    $statement->execute([
-        ':YEAR' => $apprenticeship['year'],
-        ':OFFICE_WORK' => $apprenticeship['office_work'],
-        ':MATERIALS' => $apprenticeship['materials'],
-        ':CONSTRUCTION' => $apprenticeship['construction'],
-        ':SOCIAL_WORK' => $apprenticeship['social_work']
-    ]);
+
+    $columns = ['year', 'total', 'audiovisual_techniques_and_media_production', 'fashion_interior_and_industrial_design', 'crafts', 'music_and_performing_arts', 'library_information_and_archives', 'business_and_administration_unspecified', 'management_and_administration', 'office_work', 'wholesale_and_retail', 'computer_use', 'databases_network_design_and_administration', 'software_and_application_development_and_analysis', 'engineering_and_technical_professions_unspecified', 'chemical_and_process_engineering', 'environmental_protection_technologies', 'electricity_and_energy', 'electronics_and_automation', 'mechanical_and_metalworking', 'motor_vehicles_ships_and_aircraft', 'food', 'materials', 'textiles_clothing_footwear_and_leather', 'architecture_and_urban_planning', 'construction', 'crop_and_animal_production', 'horticulture', 'forestry', 'veterinary', 'dentistry', 'nursing_and_midwifery', 'medical_diagnostics_and_treatment_technology', 'therapy_and_rehabilitation', 'pharmacy', 'care_of_older_or_disabled_people', 'child_and_youth_work', 'social_work', 'interdisciplinary_health_and_social_programmes', 'domestic_services', 'hairdressing_and_beauty_treatment', 'hospitality_and_catering', 'sport', 'transport_services'];
+
+    $params = [];
+
+    foreach ($columns as $column) {
+        $params[':' . strtoupper($column)] = $apprenticeship[$column];
+    }
+
+    $statement->execute($params);
 }
+
 
 
 
