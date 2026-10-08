@@ -14,17 +14,38 @@
 
     </header>
     <main>
-        <h1>Lehrstellen im Wandel</h1>
-        <p>Lorem ipsum dolor sidsadt amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-            clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-            consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-            sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no
-            sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-        <h2>Wähle deinen Weg</h2>
-    </main>
-    <footer>
+        <sectoin class="lead">
+            <div class="lead-text">
+                <h1>Lehrstellen im Wandel</h1>
+                <p>Eine Lehrstelle zu finden, gehört für viele Jugendliche zum Übergang ins Berufsleben. Doch selbstverständlich ist dieser Weg nicht. Während sich die einen für eine Berufslehre entscheiden, wählen andere das Gymnasium oder schlagen einen ganz anderen Weg ein. <br> Die Ausgangslage hat sich jedoch in den letzten Jahren für junge Schweizer Bürger und Bürgerinnen stetig verändert. Seit dem Jahr 2000 ist die Schweizer Bevölkerung gewachsen. Gleichzeitig hat sich die Bildungslandschaft weiterentwickelt. Mehr Jugendliche besuchen weiterführende Schulen, neue Berufsbilder sind entstanden und die Anforderungen an die Arbeitswelt haben sich verändert. Hinter der Frage nach einer Lehrstelle steckt deshalb mehr als nur die persönliche Berufswahl. <br> Fragen auf personen anpassen... <br> Was bedeutet das für die Berufslehre? Beginnen heute tatsächlich weniger Jugendliche eine Lehre, oder verändert sich die Zahl vor allem im Verhältnis zu einer wachsenden Bevölkerung? <br> Um dieser Frage nachzugehen, lohnt sich ein Blick zurück auf die Entwicklung der Lehrantritte der letzten 25 Jahren und mit den Prognosen bis ins Jahr 2033 zeichnet sich ein Bild, dass viele Jugendliche vor eine Herausforderung stellen wird. <br> Wir begleiten drei unterschiedliche junge Menschen auf dem Weg in die Berufswelt, die sich über die Jahre in denselben Fussstapfen vorfinden. So wird sichtbar, wie sich die Situation über die Zeit verändert hat und was sie für diejenigen bedeutet, die heute oder in Zukunft vor der Wahl ihres Ausbildungsweges stehen.</p>
+            </div>
+        </sectoin>
 
+        <section class="past">
+            <div class="profil">
+                <p>Cloé (15), wohnhaft in Genf 1995 Angehende Kauffrau EFZ</p>
+            </div>
+        </section>
+
+        <section class="present">
+            <div class="profil">
+                <p>Mirko (16), wohnhaft in Aarau 2005 angehender Kanti-Schüler?</p>
+            </div>
+        </section>
+
+        <section class="future">
+            <div class="profil">
+                <p>Xeno (15), wohnhaft in Urtendorf 2015 Angehender Fachmann Gesundheit EFZ (FaGe)</p>
+            </div>
+        </section>
+
+        <h2>Wähle deinen Weg</h2>
+
+
+    </main>
+
+    <footer>
+        <a href="impressum.html">Impressum</a>
     </footer>
 
     <script src="js/script.js"></script>

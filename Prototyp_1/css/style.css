@@ -47,6 +47,10 @@ img {
     width: 100%;
 }
 
+
+
+/* Media Queries */
+
 @media screen and (min-width: 1200px) {
     .gewaehlterInhalt {
         display: grid;
