@@ -45,7 +45,6 @@
     </main>
 
     <footer>
-        <a href="impressum.html">Impressum</a>
     </footer>
 
     <script src="js/script.js"></script>
