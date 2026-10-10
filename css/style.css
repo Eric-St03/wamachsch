@@ -1,7 +1,7 @@
 @import "fonts.css";
 
 body {
-    background-color: #f0eee9;
+    background-color: var(--background);
     margin: 0;
     padding: 0 5%;
 }
@@ -10,10 +10,20 @@ body {
     font-size: 18px;
 
     /*farbe*/
-    --background: ;
-    --text-color: ;
-    --hover-color: ;
-    --accent: ;
+    --background: #f0eee9;
+    --text-color: #171717;
+
+    --past-background: #1d1d1d;
+    --past-text: #ffffff;
+
+    --present-background: #5EA0DE;
+    --present-text: #171717;
+
+    --future-background: #C336DF;
+    --future-text: #000000;
+
+    --accent: #8580ed;
+
 
 
     /* schriften*/
@@ -36,8 +46,16 @@ h3,
 h4,
 h5,
 h6 {
-    font-family:  var(--f-title);
+    font-family: var(--f-title), sans-serif;
+    line-height: 1.15;
 }
+
+
+
+
+
+
+/* Wahlabschnitt - löschen?*/
 
 .wahlAbschnitt {
     display: grid;
@@ -73,7 +91,6 @@ img {
 }
 
 
-
 /* Media Queries */
 
 @media screen and (min-width: 1200px) {
@@ -83,3 +100,4 @@ img {
         gap: 50px;
     }
 }
+

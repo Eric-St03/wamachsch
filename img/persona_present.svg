@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 180 179.17">
+  <!-- Generator: Adobe Illustrator 30.8.2, SVG Export Plug-In . SVG Version: 2.1.4 Build 7)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #3d76a5;
+      }
+
+      .st1 {
+        fill: #d3e4ef;
+      }
+
+      .st2 {
+        isolation: isolate;
+      }
+
+      .st3 {
+        fill: #1f61aa;
+      }
+
+      .st4 {
+        fill: #b2c2cc;
+      }
+
+      .st5 {
+        fill: #fff;
+        opacity: .65;
+      }
+
+      .st6 {
+        fill: #d8d6d6;
+        mix-blend-mode: multiply;
+      }
+    </style>
+  </defs>
+  <g class="st2">
+    <g id="objects">
+      <g>
+        <circle class="st5" cx="86.21" cy="92.96" r="86.21"/>
+        <circle class="st5" cx="93.79" cy="86.21" r="86.21"/>
+        <polygon class="st4" points="77.23 131.96 77.23 142.35 88.18 148.59 98.14 141.35 98.14 126.91 77.23 131.96"/>
+        <polygon class="st3" points="112.62 137.75 88.26 143.22 87.11 143.22 62.75 137.75 51.09 158.61 51.09 161.17 87.11 161.17 88.26 161.17 124.28 161.17 124.28 158.61 112.62 137.75"/>
+        <polygon class="st1" points="106.39 45.61 96.1 45.61 79.27 45.61 68.98 45.61 46.59 64.6 46.59 110.76 80.71 134.98 83.65 134.98 91.72 134.98 94.66 134.98 128.78 110.76 128.78 64.6 106.39 45.61"/>
+        <polygon class="st0" points="46.59 75.53 35.65 43.82 60.79 13.21 65.53 27.42 121.29 25.6 134.04 48.56 128.78 71.88 112.54 51.11 51.09 62.04 46.59 75.53"/>
+        <polyline class="st6" points="88.26 161.17 124.28 161.17 124.28 158.61 112.62 137.75 98.14 141 98.14 132.51 128.78 110.76 128.78 71.88 134.04 48.56 121.29 25.6 87.03 26.72"/>
+      </g>
+    </g>
+  </g>
+</svg>
