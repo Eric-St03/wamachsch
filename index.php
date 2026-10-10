@@ -15,6 +15,10 @@
     </header>
     <main>
         <section class="lead">
+            <div class="hero-image">
+
+            </div>
+
             <div class="lead-text">
                 <h1>Lehrstellen im Wandel</h1>
                 <p>Eine Lehrstelle zu finden, gehört für viele Jugendliche zum Übergang ins Berufsleben. Doch selbstverständlich ist dieser Weg nicht. Während sich die einen für eine Berufslehre entscheiden, wählen andere das Gymnasium oder schlagen einen ganz anderen Weg ein. <br> Die Ausgangslage hat sich jedoch in den letzten Jahren für junge Schweizer Bürger und Bürgerinnen stetig verändert. Seit dem Jahr 2000 ist die Schweizer Bevölkerung gewachsen. Gleichzeitig hat sich die Bildungslandschaft weiterentwickelt. Mehr Jugendliche besuchen weiterführende Schulen, neue Berufsbilder sind entstanden und die Anforderungen an die Arbeitswelt haben sich verändert. Hinter der Frage nach einer Lehrstelle steckt deshalb mehr als nur die persönliche Berufswahl. </p>
@@ -28,7 +32,7 @@
         <section class="past">
             <div class="profil">
                 <img src="img/persona_past.svg" alt="Persona Past">
-                <h4>Cloé (15), wohnhaft in Genf 1995 Angehende Kauffrau EFZ</h4>
+                <h4>Cloé (15), wohnhaft in Genf<br>Angehende Kauffrau EFZ</h4>
             </div>
 
             <p> Für Cloé ist die Berufswahl noch eine überschaubare Angelegenheit. Nach der Schule wird sie eine Berufslehre absolvieren, die sie praktisch auf das Berufsleben vorbereitet.</p>
@@ -46,7 +50,7 @@
         <section class="present">
             <div class="profil">
                 <img src="img/persona_present.svg" alt="Persona Present">
-                <h4>Mirko (16), wohnhaft in Aarau 2005 angehender Kanti-Schüler?</h4>
+                <h4>Mirko (16), wohnhaft in Aarau <br> Angehender Kanti-Schüler?</h4>
             </div>
 
             <p>Mirko hat sich gegen eine Lehre entschieden, zumindest vorerst. Er besucht nach der Sekundarschule die Kantonsschule in Aarau. Ob später ein Studium folgt, ist ihm noch nicht klar, doch bereits in die Arbeitswelt einsteigen steht für ihn ausserfrage. Seine Entscheidung ist kein Einzelfall. </p>
@@ -58,11 +62,10 @@
 
             <div class="profil">
                 <img src="img/persona_future.svg" alt="Persona Future">
-                <h4>Xeno (15), wohnhaft in Urtendorf 2015 Angehender Fachmann Gesundheit EFZ (FaGe)</h4>
+                <h4>Xeno (15), wohnhaft in Urtendorf <br> Angehender Fachmann Gesundheit EFZ (FaGe)</h4>
             </div>
 
-            <p>Für Xeno kommt ein Studium zu Zeit nicht in Frage. Er hat bei seinem älteren Bruder, der einen Bachelor in Grafikdesign absolvierte und nun dank KI keinen Anstellung findet, gesehen dass einen höhere Bildung nicht immer zum Erfolg führt. Lieber möchte er einen Beruf erlernen, der nie durch ein Programm ersetzt werden kann und immer offene Stellen vorhanden sind.
-            </p>
+            <p>Für Xeno kommt ein Studium zu Zeit nicht in Frage. Er hat bei seinem älteren Bruder, der einen Bachelor in Grafikdesign absolvierte und nun dank KI keinen Anstellung findet, gesehen dass einen höhere Bildung nicht immer zum Erfolg führt. Lieber möchte er einen Beruf erlernen, der nie durch ein Programm ersetzt werden kann und immer offene Stellen vorhanden sind.</p>
         </section>
 
         <h2>Wähle deinen Weg</h2>
