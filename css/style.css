@@ -10,13 +10,13 @@
     --past-background: #2b2b2b;
     --past-text: #f8f7f5;
 
-    --present-background: #5EA0DE;
-    --present-text: #171717;
+    --present-background: #77b0e6;
+    --present-text: #101010;
 
     --future-background: #d795ed;
     --future-text: #171717;
 
-    --accent: #8580ed;
+    --accent: #827ec6;
 
 
 
@@ -41,7 +41,10 @@
 /*diverse Elemente*/
 
 body {
-    background-color: var(--background);
+    background: linear-gradient(
+            var(--background),
+            #edebe7
+    );
     margin: 0;
     line-height: 1.3;
     padding: 7%;
@@ -56,18 +59,33 @@ h6 {
     font-family: var(--f-title), sans-serif;
     line-height: 1.15;
 }
-
+a {
+    color: var(--text-color);
+    text-decoration: none;
+    &:hover{
+        color: var(--accent);
+    }
+}
 
 /*Lead Hero*/
+
+.hero-image {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 100vw;
+    z-index: -100;
+}
+
+.lead h2 {
+    line-height: 1.1;
+
+}
 
 .lead-text {
     width: 100%;
     max-width: var(--text-max-width);
     margin-inline: auto;
-}
-
-.lead h1 {
-    line-height: 1.1;
 }
 
 .lead h3 {
@@ -79,6 +97,23 @@ h6 {
 
 
 /* Past, Future, Present*/
+
+.clock {
+    display: flex;
+    flex-direction: row;
+    margin-inline: auto;
+    max-width: var(--text-max-width);
+}
+
+.clock_container{
+    width: 100px;
+    margin-inline: auto;
+    margin-top: var(--ga-medium);
+}
+.clock_container h5{
+    text-align: center;
+    margin-top: 5px;
+}
 
 .past, .present, .future {
     padding: var(--ga-medium);
@@ -92,18 +127,36 @@ h6 {
 .past {
     background-color: var(--past-background);
     color: var(--past-text);
+    border: 5px solid #1b1b1b;
+    background-image: url("../img/hexagon.svg");
+    background-position: bottom;
+    background-size: 180%;
+    background-blend-mode: soft-light;
+    background-repeat: no-repeat;
 }
 
 
 .present {
     background-color: var(--present-background);
     color: var(--present-text);
+    border: 5px solid #5098df;
+    background-image: url("../img/hexagon.svg");
+    background-position: bottom;
+    background-size: 180%;
+    background-blend-mode: soft-light;
+    background-repeat: no-repeat;
 }
 
 
 .future {
     background-color: var(--future-background);
     color: var(--future-text);
+    border: 5px solid #d47df1;
+    background-image: url("../img/hexagon.svg");
+    background-position: bottom;
+    background-size: 180%;
+    background-blend-mode: soft-light;
+    background-repeat: no-repeat;
 }
 
 
@@ -128,6 +181,17 @@ h6 {
     line-height: 1.4;
     margin: 0;
 }
+
+/*Impressum*/
+
+.impressum {
+    display : flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: var(--text-max-width);
+    margin-inline: auto;
+}
+
 
 
 
@@ -174,6 +238,19 @@ img {
         display: grid;
         grid-template-columns: 3fr 5fr;
         gap: 50px;
+    }
+    .impressum{
+        flex-direction: row;
+        max-width: 1000px;
+        gap: 4rem;
+    }
+
+    .adresse {
+        width: 35%;
+    }
+
+    .text_impressum{
+        width: 65%;
     }
 }
 

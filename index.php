@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" xmlns="http://www.w3.org/1999/html">
 
 <head>
     <meta charset="utf-8">
@@ -15,17 +15,34 @@
     </header>
     <main>
         <section class="lead">
-            <div class="hero-image">
 
+            <div class="hero-image">
+            <img src="img/Hero.svg" alt="Hero Image">
             </div>
 
             <div class="lead-text">
-                <h1>Lehrstellen im Wandel</h1>
+                <img src="img/logo.svg" alt="Logo">
+                <h2>untertitel???</h2>
                 <p>Eine Lehrstelle zu finden, gehört für viele Jugendliche zum Übergang ins Berufsleben. Doch selbstverständlich ist dieser Weg nicht. Während sich die einen für eine Berufslehre entscheiden, wählen andere das Gymnasium oder schlagen einen ganz anderen Weg ein. <br> Die Ausgangslage hat sich jedoch in den letzten Jahren für junge Schweizer Bürger und Bürgerinnen stetig verändert. Seit dem Jahr 2000 ist die Schweizer Bevölkerung gewachsen. Gleichzeitig hat sich die Bildungslandschaft weiterentwickelt. Mehr Jugendliche besuchen weiterführende Schulen, neue Berufsbilder sind entstanden und die Anforderungen an die Arbeitswelt haben sich verändert. Hinter der Frage nach einer Lehrstelle steckt deshalb mehr als nur die persönliche Berufswahl. </p>
 
                 <h3> Fragen auf personen anpassen... <br> Was bedeutet das für die Berufslehre? Beginnen heute tatsächlich weniger Jugendliche eine Lehre, oder verändert sich die Zahl vor allem im Verhältnis zu einer wachsenden Bevölkerung? </h3>
 
                 <p>Um dieser Frage nachzugehen, lohnt sich ein Blick zurück auf die Entwicklung der Lehrantritte der letzten 25 Jahren und mit den Prognosen bis ins Jahr 2033 zeichnet sich ein Bild, dass viele Jugendliche vor eine Herausforderung stellen wird. <br> Wir begleiten drei unterschiedliche junge Menschen auf dem Weg in die Berufswelt, die sich über die Jahre in denselben Fussstapfen vorfinden. So wird sichtbar, wie sich die Situation über die Zeit verändert hat und was sie für diejenigen bedeutet, die heute oder in Zukunft vor der Wahl ihres Ausbildungsweges stehen.</p>
+            </div>
+        </section>
+
+        <section class="clock">
+            <div class="clock_container">
+                <img src="img/clock_past.svg" alt="Vergangenheit">
+                <h5>Vergangenheit</h5>
+            </div>
+            <div class="clock_container">
+                <img src="img/clock_present.svg" alt="Gegenwart">
+                <h5>Gegenwart</h5>
+            </div>
+            <div class="clock_container">
+                <img src="img/clock_future.svg" alt="Zukunft">
+                <h5>Zukunft</h5>
             </div>
         </section>
 
@@ -74,6 +91,7 @@
     </main>
 
     <footer>
+        <a href="impressum.php">Impressum</a>
     </footer>
 
     <script src="js/script.js"></script>
