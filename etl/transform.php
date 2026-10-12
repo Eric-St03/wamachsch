@@ -1,5 +1,4 @@
 <?php
-header('Content-type: text/plain; charset=utf8');
 
 // Define main variables with extracted data
 $data = include __DIR__ . '/extract.php';
@@ -21,96 +20,75 @@ function normalizeYear($year) {
     return substr($year ,0,2) . substr($year ,5);
 }
 
+function transformBirthplaceData($learner, $year) {
+    return [
+        'year' => $year,
+        'total' => $learner['Staatsangehörigkeit - Total'],
+        'swiss' => $learner['Schweiz'],
+        'foreigners' => $learner['Ausland']
+    ];
+}
+
 $vocationalTrainingsByBirthplace = [];
 $generalEducationTrainingsByBirthplace = [];
 
 foreach ($learnersByBirthplace as $learner) {
 
     $year = normalizeYear($learner['Jahr']);
-    if ($learner['Bildungsstufe und Bildungstyp'] == "Berufliche Grundbildung") {
-        $vocationalTrainingsByBirthplace[$year] = [
-            'year' => $year,
-            'total' => $learner['Staatsangehörigkeit - Total'],
-            'swiss' => $learner['Schweiz'],
-            'foreigners' => $learner['Ausland']
-        ];
+    $type = $learner['Bildungsstufe und Bildungstyp'];
+    if ($type == "Berufliche Grundbildung") {
+        $vocationalTrainingsByBirthplace[$year] = transformBirthplaceData($learner, $year);
     } elseif ($learner['Bildungsstufe und Bildungstyp'] == "Allgemeinbildende Ausbildungen") {
-        $generalEducationTrainingsByBirthplace[$year] = [
-            'year' => $year,
-            'total' => $learner['Staatsangehörigkeit - Total'],
-            'swiss' => $learner['Schweiz'],
-            'foreigners' => $learner['Ausland']
-        ];
+        $generalEducationTrainingsByBirthplace[$year] = transformBirthplaceData($learner, $year);
     }
 }
 
 
 // = Learners by canton =
 
+function transformCantonData($learner) {
+    return [
+        'total' => $learner['Schweiz'],
+        'zurich' => $learner['Zürich'],
+        'bern' => $learner['Bern / Berne'],
+        'uri' => $learner['Uri'],
+        'schwyz' => $learner['Schwyz'],
+        'obwalden' => $learner['Obwalden'],
+        'nidwalden' => $learner['Nidwalden'],
+        'glarus' => $learner['Glarus'],
+        'zug' => $learner['Zug'],
+        'fribourg' => $learner['Fribourg / Freiburg'],
+        'solothurn' => $learner['Solothurn'],
+        'basel_stadt' => $learner['Basel-Stadt'],
+        'basel_landschaft' => $learner['Basel-Landschaft'],
+        'schaffhausen' => $learner['Schaffhausen'],
+        'appenzell_ausserrhoden' => $learner['Appenzell Ausserrhoden'],
+        'appenzell_innerrhoden' => $learner['Appenzell Innerrhoden'],
+        'st_gallen' => $learner['St. Gallen'],
+        'grisons' => $learner['Graubünden / Grigioni / Grischun'],
+        'aargau' => $learner['Aargau'],
+        'thurgau' => $learner['Thurgau'],
+        'ticino' => $learner['Ticino'],
+        'vaud' => $learner['Vaud'],
+        'valais' => $learner['Valais / Wallis'],
+        'neuchatel' => $learner['Neuchâtel'],
+        'geneva' => $learner['Genève'],
+        'jura' => $learner['Jura']
+    ];
+}
+
 $vocationalTrainingsByCanton = [];
 $generalEducationTrainingsByCanton = [];
 
 foreach ($learnersByCanton as $learner) {
 
+    $type = $learner['Bildungsstufe und Bildungstyp'];
+
     $year = normalizeYear($learner['Jahr']);
-    if ($learner['Bildungsstufe und Bildungstyp'] == "Berufliche Grundbildung") {
-        $vocationalTrainingsByCanton[$year] = [
-            'total' => $learner['Schweiz'],
-            'zurich' => $learner['Zürich'],
-            'bern' => $learner['Bern / Berne'],
-            'uri' => $learner['Uri'],
-            'schwyz' => $learner['Schwyz'],
-            'obwalden' => $learner['Obwalden'],
-            'nidwalden' => $learner['Nidwalden'],
-            'glarus' => $learner['Glarus'],
-            'zug' => $learner['Zug'],
-            'fribourg' => $learner['Fribourg / Freiburg'],
-            'solothurn' => $learner['Solothurn'],
-            'basel_stadt' => $learner['Basel-Stadt'],
-            'basel_landschaft' => $learner['Basel-Landschaft'],
-            'schaffhausen' => $learner['Schaffhausen'],
-            'appenzell_ausserrhoden' => $learner['Appenzell Ausserrhoden'],
-            'appenzell_innerrhoden' => $learner['Appenzell Innerrhoden'],
-            'st_gallen' => $learner['St. Gallen'],
-            'grisons' => $learner['Graubünden / Grigioni / Grischun'],
-            'aargau' => $learner['Aargau'],
-            'thurgau' => $learner['Thurgau'],
-            'ticino' => $learner['Ticino'],
-            'vaud' => $learner['Vaud'],
-            'valais' => $learner['Valais / Wallis'],
-            'neuchatel' => $learner['Neuchâtel'],
-            'geneva' => $learner['Genève'],
-            'jura' => $learner['Jura']
-        ];
-    } elseif ($learner['Bildungsstufe und Bildungstyp'] == "Allgemeinbildende Ausbildungen") {
-        $generalEducationTrainingsByCanton[$year] = [
-            'total' => $learner['Schweiz'],
-            'zurich' => $learner['Zürich'],
-            'bern' => $learner['Bern / Berne'],
-            'uri' => $learner['Uri'],
-            'schwyz' => $learner['Schwyz'],
-            'obwalden' => $learner['Obwalden'],
-            'nidwalden' => $learner['Nidwalden'],
-            'glarus' => $learner['Glarus'],
-            'zug' => $learner['Zug'],
-            'fribourg' => $learner['Fribourg / Freiburg'],
-            'solothurn' => $learner['Solothurn'],
-            'basel_stadt' => $learner['Basel-Stadt'],
-            'basel_landschaft' => $learner['Basel-Landschaft'],
-            'schaffhausen' => $learner['Schaffhausen'],
-            'appenzell_ausserrhoden' => $learner['Appenzell Ausserrhoden'],
-            'appenzell_innerrhoden' => $learner['Appenzell Innerrhoden'],
-            'st_gallen' => $learner['St. Gallen'],
-            'grisons' => $learner['Graubünden / Grigioni / Grischun'],
-            'aargau' => $learner['Aargau'],
-            'thurgau' => $learner['Thurgau'],
-            'ticino' => $learner['Ticino'],
-            'vaud' => $learner['Vaud'],
-            'valais' => $learner['Valais / Wallis'],
-            'neuchatel' => $learner['Neuchâtel'],
-            'geneva' => $learner['Genève'],
-            'jura' => $learner['Jura']
-        ];
+    if ($type === "Berufliche Grundbildung") {
+        $vocationalTrainingsByCanton[$year] = transformCantonData($learner);
+    } elseif ($type === "Allgemeinbildende Ausbildungen") {
+        $generalEducationTrainingsByCanton[$year] = transformCantonData($learner);
     }
 }
 
