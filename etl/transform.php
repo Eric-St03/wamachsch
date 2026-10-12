@@ -17,7 +17,7 @@ $futurePopulationByBirthplace = $data['futurePopulationByBirthplace'];
 // = Learners by birthplace =
 
 function normalizeYear($year) {
-    return substr($year ,0,2) . substr($year ,5);
+    return substr($year, 0, 2) . substr($year, 5);
 }
 
 function transformBirthplaceData($learner, $year) {
