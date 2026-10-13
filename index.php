@@ -59,11 +59,10 @@
 
                 <p> Ihre Situation steht für eine Zeit, in der die Berufslehre in der Schweiz für viele Jugendliche der normale nächste Schritt nach der obligatorischen Schule war. Doch auch damals war nicht jede Lehre gleich gefragt. Zwischen verschiedenen Regionen und Branchen gab es Unterschiede, und mit der Zeit verschob sich auch, welche Berufe besonders häufig gewählt wurden. </p>
 
-                <p>Grafik, nach Kanton 2010-2025 (filtern nach Kanton) learners Anzahl Berufslehre nach Kantone im Vergleich (graph der sich verändert) Text zur Analyse der Grafik </p>
-
-                <p> Cloé lebt in Genf, einem Kanton, in dem die Berufliche Grundbildung einen anderen Stellenwert hat als beispielsweise in dem eher ländlich gelegen Kanton Glarus. (Zahlen zur einordnung) Berufslehren waren in der Schweiz anfangs der 2000er zwar weit verbreitet, aber nicht überall gleich stark vertreten.</p>
-                <p>Grafik, Entwicklung der Lerhantritte 2010-2025? new_apprenticeships_by_industry  Nach Branchen (KV, Werkstoffe, Bau, Soz)  Wie? Fadenkreuz?</p>
-
+                <p>Grafik, nach Kanton 2010-2025 (filtern nach Kanton) learners Anzahl Berufslehre nach Kantone im Vergleich (graph der sich verändert) Text zur Analyse der Grafik </p><br>
+                <canvas id="chartLearnersByCanton"></canvas> <br>
+                <p> Cloé lebt in Genf, einem Kanton, in dem die Berufliche Grundbildung einen anderen Stellenwert hat als beispielsweise in dem eher ländlich gelegen Kanton Glarus. (Zahlen zur einordnung) Berufslehren waren in der Schweiz anfangs der 2000er zwar weit verbreitet, aber nicht überall gleich stark vertreten.</p><br>
+                <canvas id="chartNewApprenticeshipsByIndustry"></canvas><br>
                 <p> Auch bei den Berufsbilder hat sich einiges verändert. Während einige Felder über die Jahre immer beliebter wurden, verloren andere stark an Zuwachs an Lernenden. Für Cloé bedeutet das also nicht ob sie eine Lehre antreten will sondern in welchem Sektor sie ihre Zukunft sieht.</p>
             </div>
 
@@ -75,7 +74,9 @@
 
                 <p>Mirko hat sich gegen eine Lehre entschieden, zumindest vorerst. Er besucht nach der Sekundarschule die Kantonsschule in Aarau. Ob später ein Studium folgt, ist ihm noch nicht klar, doch bereits in die Arbeitswelt einsteigen steht für ihn ausserfrage. Seine Entscheidung ist kein Einzelfall. </p>
                 <p>Die Schweizer Bevölkerung ist seit dem Jahr 2000 gewachsen. Gleichzeitig hat sich die Bevölkerungsstruktur verändert. Ein Teil des Wachstums ist auf Migration zurückzuführen. Gerade bei Jugendlichen zeigt sich deshalb heute einen andere Zusammensetzung als noch zu Beginn des Jahrhunderts.
-                </p>
+                </p><br>
+                <canvas id="chartPopulationByBirthplace"></canvas><br>
+                <canvas id="chartGeneralEducationVsVocational"></canvas><br>
             </div>
 
             <div class="future">
@@ -84,7 +85,6 @@
                     <img src="img/persona_future.svg" alt="Persona Future">
                     <h4>Xeno (15), wohnhaft in Urtendorf <br> Angehender Fachmann Gesundheit EFZ (FaGe)</h4>
                 </div>
-
                 <p>Für Xeno kommt ein Studium zu Zeit nicht in Frage. Er hat bei seinem älteren Bruder, der einen Bachelor in Grafikdesign absolvierte und nun dank KI keinen Anstellung findet, gesehen dass einen höhere Bildung nicht immer zum Erfolg führt. Lieber möchte er einen Beruf erlernen, der nie durch ein Programm ersetzt werden kann und immer offene Stellen vorhanden sind.</p>
             </div>
 
@@ -102,9 +102,12 @@
 
     <footer>
         <a href="impressum.php">Impressum</a>
+        <p>Daten bfs.ch</p>
     </footer>
 
     <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/dataVisualizer.js"></script>
 </body>
 
 </html>
