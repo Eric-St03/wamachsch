@@ -464,7 +464,7 @@ getGeneralEducationVsVocational().then(e => {
                         order: 2 //Niedrigere Zahl = wird weiter vorne gezeichnet, vergleichbar mit z-index, nur umgekehrt
                     },
                     {
-                        label: 'Ausländisch',
+                        label: 'Zuwanderer:innen',
                         data: listAmountRatioForeigners,
                         borderColor: 'rgb(128 94 26)',
                         borderWidth: 1,

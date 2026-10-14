@@ -16,7 +16,7 @@
     --future-background: #d795ed;
     --future-text: #171717;
 
-    --accent: #b2b0d8;
+    --accent: rgb(178 176 216 / 0.63);
 
 
 
@@ -51,7 +51,6 @@ body {
             var(--background),
             #edebe7
     );
-    margin: 0;
     line-height: 1.3;
 }
 
@@ -80,15 +79,23 @@ section {
 
 .hero-image {
     position: absolute;
-    top: 0px;
+    top: 0;
     left: 0;
     width: 100vw;
     z-index: -100;
 }
 
-.lead h2 {
-    line-height: 1.1;
+.logo {
+    width: 80%;
+    max-width: var(--text-max-width);
+    margin-inline: auto;
+    margin-bottom: var(--ga-large);
 
+}
+
+
+.lead{
+    margin-bottom: var(--ga-large);
 }
 
 .lead-text,
@@ -112,7 +119,7 @@ section {
     position: sticky;
     top: 5px;
     background: linear-gradient(90deg, transparent 5%, var(--accent) 20%, var(--accent) 80%, transparent 95%);
-    
+
     border-left: none;
     border-right: none;
     margin: 5% 0;
@@ -166,7 +173,7 @@ section {
 .clock_container {
     width: 100px;
     margin-inline: auto;
-    margin: var(--ga-small) auto;
+    margin: 1rem auto;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -179,7 +186,7 @@ section {
 .clock_container img {
     background: var(--background);
     border-radius: 50%;
-    padding: 4px;
+    padding: 3px;
     width: 80px;
 }
 
@@ -263,6 +270,24 @@ section {
     margin: 0;
 }
 
+/*chart*/
+
+.chart-container{
+    margin: var(--ga-medium) 0;
+    padding: 1rem;
+
+    background-color: rgb(255 255 255 / 0.63);
+    border-radius: 0 20px 0 20px;
+    box-shadow: 0 7px 9px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.chart-container canvas {
+    display: block;
+    max-width: 100%;
+}
+
 /*Impressum*/
 
 .impressum {
@@ -271,8 +296,14 @@ section {
     width: 100%;
     max-width: var(--text-max-width);
     margin-inline: auto;
+    padding: 0 7%;
 }
 
+header{
+    max-width: 200px;
+    display: flex;
+    margin: var(--ga-large);
+}
 
 
 
