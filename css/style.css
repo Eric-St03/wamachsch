@@ -118,8 +118,6 @@ section {
 .clock {
     position: sticky;
     top: 5px;
-    background: linear-gradient(90deg, transparent 5%, var(--accent) 20%, var(--accent) 80%, transparent 95%);
-
     border-left: none;
     border-right: none;
     margin: 5% 0;
@@ -134,17 +132,6 @@ section {
     width: 100%;
     top: 0;
     background: linear-gradient(90deg, transparent 5%, var(--accent) 20%, var(--accent) 80%, transparent 95%);
-    display: block;
-}
-
-.clock::after {
-    content: "";
-    position: absolute;
-    z-index: -10;
-    height: 105%;
-    width: 100%;
-    top: -2.5%;
-    background: linear-gradient(90deg, transparent 10%, var(--accent) 20%, var(--accent) 80%, transparent 90%);
     display: block;
 }
 
@@ -275,12 +262,13 @@ section {
 .chart-container{
     margin: var(--ga-medium) 0;
     padding: 1rem;
-
+    position: relative;
     background-color: rgb(255 255 255 / 0.63);
     border-radius: 0 20px 0 20px;
     box-shadow: 0 7px 9px rgba(0, 0, 0, 0.1);
     width: 100%;
     box-sizing: border-box;
+    height: clamp(450px, 25vh, 580px);
 }
 
 .chart-container canvas {
@@ -357,3 +345,31 @@ footer a:hover {
     }
 }
 
+
+@media screen and (max-width: 1140px) {
+    .clock::before {
+        background: linear-gradient(90deg, #8c89bd22 0%, var(--accent) 10%, var(--accent) 90%, #8c89bd22 100%);
+    }
+    .clock::after {
+        background: linear-gradient(90deg, #8c89bd22 0%, #8c89bd 10%, #8c89bd 90%, #8c89bd22 100%);
+    }
+}
+
+@media screen and (max-width: 840px) {
+    .clock::before {
+        background: var(--accent);
+    }
+    .clock::after {
+        background: #8c89bd;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .clock_container img {
+        padding: 2px;
+        width: 60px;
+    }
+    .chart-container {
+        padding: 0.5rem;
+    }
+}

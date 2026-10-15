@@ -286,6 +286,7 @@ getNewApprenticeshipsByIndustry().then(e => {
             },
         options: {
             responsive: true,
+            maintainAspectRatio: false,
             plugins: {
                 title: {
                     display: true,
@@ -366,6 +367,7 @@ getLearnersByCanton().then(e => {
         options: {
             indexAxis: "x",
             responsive: true,
+            maintainAspectRatio: false,
             plugins: {
                 title: {
                     display: true,
@@ -424,6 +426,7 @@ getPopulationByBirthplace().then(e => {
             },
         options: {
             responsive: true,
+            maintainAspectRatio: false,
             plugins: {
                 title: {
                     display: true,
@@ -474,6 +477,7 @@ getGeneralEducationVsVocational().then(e => {
             },
         options: {
             responsive: true,
+            maintainAspectRatio: false,
             plugins: {
                 title: {
                     display: true,
