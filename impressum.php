@@ -11,7 +11,9 @@
 
 <body>
 <header>
-
+    <div class="logo_link" id="logo_link">
+        <a href="index.php"><img src="img/logo.svg" alt="Home"></a>
+    </div>
 </header>
 <main>
     <div class="hero-image">

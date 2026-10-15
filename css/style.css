@@ -299,10 +299,41 @@ section {
     padding: 0 7%;
 }
 
-header{
+.logo_link{
     max-width: 200px;
-    display: flex;
     margin: var(--ga-large);
+}
+footer {
+    /* Hintergrundgrafik */
+    background-image: url("../img/footer.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    /* Grösse des Footers */
+    width: 100%;
+    min-height: 180px;
+
+    /* Impressum positionieren */
+    display: flex;
+    align-items: end;
+    justify-content: flex-start;
+    padding: var(--ga-large) 7%;
+    box-sizing: border-box;
+}
+
+/* Impressum-Link */
+footer a {
+    font-family: var(--f-text), sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* Hover-Effekt */
+footer a:hover {
+ color: var(--accent);
 }
 
 
