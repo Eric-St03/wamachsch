@@ -132,6 +132,13 @@
             </div>
         </section>
 
+        <section class="source">
+            <span>
+                Quelle: BFS | Bundesamt für Statistik. <br>
+                Erhobener Zeitraum: 2010-2025 inkl. Prognose bis 2033/35
+            </span>
+        </section>
+        
     </main>
 
     <footer>

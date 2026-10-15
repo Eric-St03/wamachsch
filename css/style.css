@@ -309,6 +309,17 @@ a.anchor {
     max-width: 200px;
     margin: var(--ga-large);
 }
+
+.source {
+    margin: var(--ga-large) 7%; 
+}
+
+.source span {
+    font-size: 0.7rem;
+    opacity: 0.6;
+
+}
+
 footer {
     /* Hintergrundgrafik */
     background-image: url("../img/footer.svg");
