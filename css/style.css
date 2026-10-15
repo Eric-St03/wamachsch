@@ -317,7 +317,8 @@ a.anchor {
 .source span {
     font-size: 0.7rem;
     opacity: 0.6;
-
+    width: 100%;
+    max-width: var(--text-max-width);
 }
 
 footer {
