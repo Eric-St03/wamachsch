@@ -135,7 +135,6 @@
 
     <footer>
         <a href="impressum.php">Impressum</a>
-        <p>Daten bfs.ch</p>
     </footer>
 
     <script src="js/script.js"></script>
