@@ -42,6 +42,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 /*diverse Elemente*/
@@ -184,6 +185,14 @@ section {
     margin-inline: auto;
     overflow-x: hidden;
     gap: 5%;
+}
+
+a.anchor {
+    position: relative;
+    top: -100px;
+    visibility: hidden;
+    width: 0;
+    height: 0;
 }
 
 .past, .present, .future {

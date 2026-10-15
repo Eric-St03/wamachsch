@@ -48,6 +48,7 @@
             </div>
         </section>
 
+        <a class="anchor" id="time-anchor"></a>
         <section class="time-container">
             <div class="past">
                 <div class="profil">

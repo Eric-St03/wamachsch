@@ -25,12 +25,15 @@ function changeTime(time) {
 
 btnPast.addEventListener("click", (e) => {
     changeTime("past");
+    window.location.href = "#time-anchor";
 });
 
 btnPresent.addEventListener("click", (e) => {
     changeTime("present");
+    window.location.href = "#time-anchor";
 });
 
 btnFuture.addEventListener("click", (e) => {
     changeTime("future");
+    window.location.href = "#time-anchor";
 });
