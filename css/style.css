@@ -319,6 +319,8 @@ a.anchor {
     opacity: 0.6;
     width: 100%;
     max-width: var(--text-max-width);
+    display: block;
+    margin: auto;
 }
 
 footer {
@@ -349,6 +351,10 @@ footer a {
     color: var(--text-color);
     text-decoration: none;
     text-underline-offset: 3px;
+    width: 100%;
+    max-width: var(--text-max-width);
+    display: block;
+    margin: auto;
 }
 
 /* Hover-Effekt */
